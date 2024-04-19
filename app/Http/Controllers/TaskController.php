@@ -21,7 +21,7 @@ class TaskController extends Controller
      */
     public function create()
     {
-        return view ('tasks.create');
+        return view('tasks.create');
     }
 
     /**
@@ -71,6 +71,9 @@ class TaskController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $task = Task::findOrFail($id);
+        $task->delete();
+
+        return redirect()->route('tasks.index')->with('success', 'Task deleted successfully');
     }
 }
