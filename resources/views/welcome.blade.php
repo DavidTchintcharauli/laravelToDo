@@ -831,11 +831,7 @@
 </head>
 
 <body class="antialiased">
-    <div>
-        @foreach ($tasks as $task)
-            <p>{{ $task->title }}</p>
-        @endforeach
-    </div>
+
 </body>
 
 </html>
