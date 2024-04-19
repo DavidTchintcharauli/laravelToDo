@@ -13,8 +13,8 @@ class TaskController extends Controller
     public function index()
     {
         $tasks = Task::all();
-
-        return view('tasks.index', compact('tasks'));
+    
+        return view('tasks.index', ['tasks' => $tasks]);
     }
 
     /**
@@ -30,7 +30,14 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+        ]);
+
+        Task::create($data);
+
+        return redirect()->route('tasks.index')->with('success', 'Task Created successfully!');
     }
 
     /**
