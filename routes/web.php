@@ -21,3 +21,5 @@ Route::get('/', function () {
 Route::redirect('/', '/tasks');
 
 Route::resource('tasks', TaskController::class);
+
+Route::get('/tasks/create', [TaskController::class,'create'])->name('tasks.create');
